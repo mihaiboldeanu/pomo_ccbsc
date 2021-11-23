@@ -18,11 +18,12 @@ from skimage.morphology import dilation, disk
 import matplotlib.pyplot as plt
 
 from ..pomonet import *
-import ccbysc
-from ccbysc.classification import Classification,Coordinates
-from ccbysc.device import Photo
 
-class Unet_ccbsca(ccbysc.CCBSCAlgorithm):
+import ccbysc_api
+from ccbysc_api.classification import Classification,Coordinates,Pollen
+from ccbysc_api.device import Photo
+
+class Unet_ccbsca(ccbysc_api.CCBSCAlgorithm):
     def __init__(self,validation=False):
         dependencies = {'mean_IOU': utils.mean_IOU}
         self.model_u_net = load_model(r".\models\u_net_classical-0.00299.hdf5",custom_objects=dependencies)
@@ -109,7 +110,7 @@ class Unet_ccbsca(ccbysc.CCBSCAlgorithm):
                 else:
                     features = None
                 coordinates = Coordinates(x, width, y, height)
-                pollen_class = Classification(coordinates, "Alternaria", photo,features)
+                pollen_class = Classification(coordinates, Pollen.ALTERNARIA, photo,features)
                 ret_list.append(pollen_class)
         else:
     

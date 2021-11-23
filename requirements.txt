@@ -1,4 +1,4 @@
-ccbysc-api==0.0.3
+ccbysc-api==0.0.4
 numpy
 tensorflow==2.5.0
 matplotlib
