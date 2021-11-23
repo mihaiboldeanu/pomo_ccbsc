@@ -84,7 +84,7 @@ class Unet_ccbsca(ccbysc.CCBSCAlgorithm):
                 if not os.path.exists(directory):
                     os.makedirs(directory)
                 name = photo.id
-                plt.figure()
+                f = plt.figure()
                 plt.imshow(numpy_array_image,cmap="gray")
                 for coord in coord_list_valid:
                     plt.scatter(coord[2],coord[0])
@@ -94,10 +94,11 @@ class Unet_ccbsca(ccbysc.CCBSCAlgorithm):
                 file_path = os.path.join(directory,name+".png")
                 plt.tight_layout()
                 plt.savefig(file_path,bbox_inches='tight')
-                plt.close()
+                f.clear()
+                plt.close(f)
+                plt.close("all")
+               
 
-            
-            
             
             for c,conf in enumerate(confirmation):
                 crop_target = coord_list_valid[c]
@@ -116,7 +117,9 @@ class Unet_ccbsca(ccbysc.CCBSCAlgorithm):
         else:
     
             ret_list = []
-            
+        
+        K.clear_session()
+        _ = gc.collect()
         return ret_list
     
     def identifier(self):

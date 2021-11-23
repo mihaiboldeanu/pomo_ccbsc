@@ -198,7 +198,7 @@ def segment_image(array):
             y_max = 959
         if x_max >= 1280:
             x_max = 1279
-        coord_list.append((x_min,x_max,y_min,y_max))
+        coord_list.append([x_min,x_max,y_min,y_max])
     
     
     return coord_list
