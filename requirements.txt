@@ -1,0 +1,10 @@
+ccbysc-api==0.0.3
+numpy
+tensorflow==2.5.0
+matplotlib
+skimage
+
+# DEV
+wheel == 0.37.0
+setuptools == 58.2.0
+autopep8 == 1.5.7
