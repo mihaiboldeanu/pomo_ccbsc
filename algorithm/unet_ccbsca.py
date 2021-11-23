@@ -17,17 +17,14 @@ from tensorflow.keras import backend as K
 from skimage.morphology import dilation, disk
 import matplotlib.pyplot as plt
 
-import pomonet
+from ..pomonet import *
 import ccbysc
 from ccbysc.classification import Classification,Coordinates
-from ccbysc.device import Photo, Photo_fake
-
-from ccbysc.classification import Classification,Coordinates
-from ccbysc.device import Photo, Photo_fake
+from ccbysc.device import Photo
 
 class Unet_ccbsca(ccbysc.CCBSCAlgorithm):
     def __init__(self,validation=False):
-        dependencies = {'mean_IOU': pomonet.utils.mean_IOU}
+        dependencies = {'mean_IOU': utils.mean_IOU}
         self.model_u_net = load_model(r".\models\u_net_classical-0.00299.hdf5",custom_objects=dependencies)
         self.model_cnn = load_model(r".\models\cnn_model-0-aug-0.93770.hdf5",custom_objects=dependencies)
         self.identifier = "u_net_cnn_model"
@@ -47,13 +44,13 @@ class Unet_ccbsca(ccbysc.CCBSCAlgorithm):
         result_u_net = self.model_u_net(temp_x_tensor)
         result_u_net = np.array(result_u_net)
         
-        expanded_mask = pomonet.utils.expand_mask(result_u_net)
+        expanded_mask = utils.expand_mask(result_u_net)
         expanded_mask = np.reshape(expanded_mask,(1,960,1280,1))
         
         if (expanded_mask==2).any():
-            alternaria = pomonet.utils.get_one_class(expanded_mask)
-            coord_list = pomonet.utils.segment_image(alternaria)
-            coord_list_valid,expanded_mask = pomonet.utils.validate_coords(coord_list,expanded_mask,alternaria)
+            alternaria = utils.get_one_class(expanded_mask)
+            coord_list = utils.segment_image(alternaria)
+            coord_list_valid,expanded_mask = utils.validate_coords(coord_list,expanded_mask,alternaria)
         else:
             coord_list_valid = []
 
@@ -65,9 +62,9 @@ class Unet_ccbsca(ccbysc.CCBSCAlgorithm):
             ret_list = []
             
             for j,corners in enumerate(coord_list_valid):
-                crop_for_cnn = pomonet.utils.get_crop(numpy_array_image,corners)
+                crop_for_cnn = utils.get_crop(numpy_array_image,corners)
                 
-                mask_for_cnn = pomonet.utils.get_crop(alternaria[0,:,:,0],corners)
+                mask_for_cnn = utils.get_crop(alternaria[0,:,:,0],corners)
                 mask_for_cnn[:,:,0] = dilation(mask_for_cnn[:,:,0],selem=disk(6))
                 mask_for_cnn = mask_for_cnn > 0
                 
