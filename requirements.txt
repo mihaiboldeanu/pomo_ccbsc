@@ -1,6 +1,6 @@
 ccbysc-api==0.0.4
 numpy
-tensorflow==2.5.0
+tensorflow
 matplotlib
 scikit-image
 

@@ -8,12 +8,13 @@ setup(
     url="",
     license='MIT',
     platforms=["any"],
-
     install_requires=[
-        "ccbysc-api==0.0.2",
+        "ccbysc-api==0.0.4",
         "numpy",
-        "tensorflow==2.5.0",
+        "tensorflow",
         "matplotlib",
         "scikit-image",
-    ]
+    ],
+    package_data={'': ['*.hdf5']},
+    include_package_data=True
 )
