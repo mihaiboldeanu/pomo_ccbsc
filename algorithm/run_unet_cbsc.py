@@ -16,7 +16,7 @@ from tensorflow.keras import backend as K
 
 from ccbysc.device import  Photo_fake
 from unet_ccbsca import Unet_ccbsca
-from pympler.tracker import SummaryTracker
+#from pympler.tracker import SummaryTracker
 
 
 # Free up RAM in case the model definition cells were run multiple times

@@ -1,1 +1,0 @@
-from ._photo import Photo,Photo_fake
