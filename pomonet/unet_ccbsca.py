@@ -19,13 +19,13 @@ import matplotlib.pyplot as plt
 
 
 
-import ccbysc_api
-from ccbysc_api.classification import Classification,Coordinates,Pollen
-from ccbysc_api.device import Photo
+import ccbsc_api
+from ccbsc_api.classification import Classification,Coordinates,Pollen
+from ccbsc_api.device import Photo
 
 import pomonet.utils as utils
 
-class Unet_ccbsca(ccbysc_api.CCBSCAlgorithm):
+class Unet_ccbsca(ccbsc_api.CCBSCAlgorithm):
     def __init__(self,validation=False):
         dependencies = {'mean_IOU': utils.mean_IOU}
         my_path = os.path.abspath(os.path.dirname(__file__))

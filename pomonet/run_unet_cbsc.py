@@ -14,7 +14,7 @@ from tensorflow.keras import backend as K
 
 
 
-from ccbysc.device import  Photo_fake
+from ccbsc.device import  Photo_fake
 from unet_ccbsca import Unet_ccbsca
 #from pympler.tracker import SummaryTracker
 
