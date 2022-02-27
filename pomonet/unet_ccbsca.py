@@ -29,9 +29,9 @@ class Unet_ccbsca(ccbsc_api.CCBSCAlgorithm):
     def __init__(self,validation=False):
         dependencies = {'mean_IOU': utils.mean_IOU}
         my_path = os.path.abspath(os.path.dirname(__file__))
-        path_unet = os.path.join(my_path, r".\models\u_net_classical-0.00299.hdf5")
+        path_unet = os.path.join(my_path, r"models/u_net_classical-0.00299.hdf5")
         self.model_u_net = load_model(path_unet,custom_objects=dependencies)
-        path_cnn = os.path.join(my_path, r".\models\cnn_model-0-aug-0.93770.hdf5")
+        path_cnn = os.path.join(my_path, r"models/cnn_model-0-aug-0.93770.hdf5")
         self.model_cnn = load_model(path_cnn,custom_objects=dependencies)
         self.identifier = "u_net_v0.299_cnn_model_v0.937"
         self.identifier = "u_net_v0.299_cnn_model_v0.937"
