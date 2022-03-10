@@ -9,7 +9,7 @@ setup(
     license='MIT',
     platforms=["any"],
     install_requires=[
-        "ccbsc-api==0.0.4",
+        "ccbsc-api==0.0.5",
         "numpy",
         "tensorflow",
         "matplotlib",
