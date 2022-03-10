@@ -295,7 +295,7 @@ def get_crop(image,corners):
     
     im_shape = [corners[1]-corners[0],corners[3]-corners[2]]
     crop = np.array(image)[corners[0]:corners[1],corners[2]:corners[3]]
-    if corners[1]-corners[0] < 360 and corners[3]-corners[2]:
+    if corners[1]-corners[0] < 360 and corners[3]-corners[2] < 360:
     
         new_image[int(180-im_shape[0]/2):int(180+im_shape[0]/2),
                   int(180-im_shape[1]/2):int(180+im_shape[1]/2),0] = crop
