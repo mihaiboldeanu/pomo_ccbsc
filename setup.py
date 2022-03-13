@@ -2,14 +2,14 @@ from setuptools import find_packages, setup
 setup(
     name='pomo_ccbsc',
     packages=find_packages(),
-    version='0.0.1',
+    version='0.0.11',
     description='',
     author='',
     url="",
     license='MIT',
     platforms=["any"],
     install_requires=[
-        "ccbysc-api==0.0.4",
+        "ccbsc-api==0.0.5",
         "numpy",
         "tensorflow",
         "matplotlib",
